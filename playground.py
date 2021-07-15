@@ -10,14 +10,29 @@
 
 # kwargs
 
-def calculate(n, **kwargs):
-    print(kwargs) # prints dictionary {'add': 3, 'multiply': 2}
-    for key, value in kwargs.items():
-        print(key)
-        print(value)
+# def calculate(n, **kwargs):
+#     print(kwargs) # prints dictionary {'add': 3, 'multiply': 2}
+#     for key, value in kwargs.items():
+#         print(key)
+#         print(value)
+#
+#     n += kwargs["add"]
+#     n *= kwargs["multiply"]
+#     print(n)
+#
+# calculate(2, add=3, multiply=5)
 
-    n += kwargs["add"]
-    n *= kwargs["multiply"]
-    print(n)
+class Car:
+    def __init__(self, **kw):
+        self.make = kw["make"] #if this argument is not given error raise
+        self.model = kw.get("model") #if this argument not given
+        self.colors = kw.get("colors")
+        self.seats = kw.get("seats")
 
-calculate(2, add=3, multiply=5)
+
+new_car = Car(make="Nissan", model="GT-R")
+print(new_car.make)
+print(new_car.model)
+print(new_car.colors)
+
+
